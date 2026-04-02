@@ -1,3 +1,5 @@
+import FadeIn from './FadeIn'
+
 function LinkedInIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -18,25 +20,28 @@ export default function Contact() {
   return (
     <section id="contact" className="px-6 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-light tracking-tight sm:text-4xl">
-          <span className="text-text-primary">Let's</span>{' '}
-          <span className="text-accent">Connect</span>
-        </h2>
-        <p className="mt-4 text-text-secondary">
-          Open to new opportunities. Let's talk.
-        </p>
+        <FadeIn>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Let's <span className="text-accent">Connect</span>
+          </h2>
+          <p className="mt-4 text-text-secondary">
+            Open to new opportunities. Let's talk.
+          </p>
+        </FadeIn>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a href="mailto:rtaslakian@gmail.com" className="rounded-lg border border-border px-5 py-3 text-sm text-text-secondary transition-all hover:border-accent-border hover:text-accent">
-            rtaslakian@gmail.com
-          </a>
-          <a href="https://www.linkedin.com/in/raffi-taslakian/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg border border-border px-5 py-3 text-sm text-text-muted transition-all hover:border-accent-border hover:text-accent">
-            <LinkedInIcon /> LinkedIn
-          </a>
-          <a href="https://github.com/Rtaslak" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg border border-border px-5 py-3 text-sm text-text-muted transition-all hover:border-accent-border hover:text-accent">
-            <GitHubIcon /> GitHub
-          </a>
-        </div>
+        <FadeIn delay={0.1}>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href="mailto:rtaslakian@gmail.com" className="rounded-md bg-accent px-5 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25">
+              rtaslakian@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/raffi-taslakian/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-text-muted transition-all duration-200 hover:border-text-muted hover:text-text-primary">
+              <LinkedInIcon /> LinkedIn
+            </a>
+            <a href="https://github.com/Rtaslak" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-text-muted transition-all duration-200 hover:border-text-muted hover:text-text-primary">
+              <GitHubIcon /> GitHub
+            </a>
+          </div>
+        </FadeIn>
       </div>
     </section>
   )

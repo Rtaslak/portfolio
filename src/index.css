@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #070b14;
-  --color-bg-card: #0c1221;
-  --color-bg-elevated: #111a2e;
-  --color-border: #1a2744;
-  --color-border-accent: #2a3a5c;
-  --color-text-primary: #e8ecf4;
-  --color-text-secondary: #8b97b0;
-  --color-text-muted: #4a5568;
-  --color-accent: #a78bfa;
-  --color-accent-hover: #b9a0fc;
-  --color-accent-dim: rgba(167, 139, 250, 0.08);
-  --color-accent-border: rgba(167, 139, 250, 0.2);
+  --color-bg: #09090b;
+  --color-bg-card: #111113;
+  --color-bg-elevated: #18181b;
+  --color-border: #27272a;
+  --color-border-accent: #3b82f6;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #52525b;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-accent-dim: rgba(59, 130, 246, 0.08);
+  --color-accent-border: rgba(59, 130, 246, 0.25);
+  --color-cyan: #22d3ee;
   --color-green: #34d399;
-  --color-blue: #60a5fa;
   --font-mono: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
 }
 
@@ -24,10 +24,6 @@ html {
 
 body {
   background-color: var(--color-bg);
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 48px 48px;
   color: var(--color-text-primary);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -43,23 +39,5 @@ body {
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-accent) 30%, var(--color-accent) 70%, transparent);
-  opacity: 0.2;
-}
-
-.glow-card {
-  position: relative;
-}
-.glow-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(167,139,250,0.15), transparent 50%, rgba(96,165,250,0.1));
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.glow-card:hover::before {
-  opacity: 1;
+  background: linear-gradient(90deg, transparent, var(--color-border) 30%, var(--color-border) 70%, transparent);
 }

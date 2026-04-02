@@ -1,52 +1,86 @@
+import { motion } from 'framer-motion'
+
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center px-6 sm:px-8">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.03] blur-[120px]" />
+    <section className="relative flex min-h-screen items-center px-6 sm:px-8 overflow-hidden">
+      {/* Gradient orbs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-40 right-1/4 h-[500px] w-[500px] rounded-full bg-accent/[0.07] blur-[100px]" />
+        <div className="absolute bottom-0 left-1/4 h-[400px] w-[400px] rounded-full bg-cyan/[0.05] blur-[100px]" />
       </div>
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-12 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex-1">
-          <div className="inline-flex items-center gap-2 rounded-full border border-accent-border bg-accent-dim px-4 py-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-green" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-green animate-pulse" />
             <span className="text-xs text-text-secondary">Available for opportunities</span>
-          </div>
+          </motion.div>
 
-          <h1 className="mt-6 text-[clamp(2.8rem,7vw,5rem)] font-bold leading-[1.05] tracking-tight text-text-primary">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-6 text-[clamp(2.8rem,7vw,5rem)] font-bold leading-[1.05] tracking-tight text-text-primary"
+          >
             Raffi<br />Taslakian
-          </h1>
+          </motion.h1>
 
-          <p className="mt-5 text-xl sm:text-2xl">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-5 text-xl sm:text-2xl"
+          >
             <span className="text-accent">Full-Stack Engineer</span>{' '}
             <span className="text-text-muted">·</span>{' '}
             <span className="text-text-secondary">RFID & IoT Systems</span>
-          </p>
+          </motion.p>
 
-          <p className="mt-6 max-w-md text-base leading-relaxed text-text-secondary">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-6 max-w-md text-base leading-relaxed text-text-secondary"
+          >
             I connect physical operations with software — RFID hardware
             on the factory floor to live dashboards in the cloud.
-          </p>
+          </motion.p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#project" className="rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-10 flex flex-wrap items-center gap-4"
+          >
+            <a href="#project" className="rounded-md bg-accent px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25">
               See My Work
             </a>
-            <a href="#contact" className="rounded-lg border border-border px-6 py-3 text-sm text-text-secondary transition-colors hover:border-accent-border hover:text-text-primary">
+            <a href="#contact" className="rounded-md border border-border px-6 py-3 text-sm text-text-secondary transition-all duration-200 hover:border-text-muted hover:text-text-primary">
               Get in Touch
             </a>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="shrink-0">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="shrink-0"
+        >
           <div className="relative">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent/20 via-transparent to-blue/10 blur-sm" />
+            <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-accent/30 via-transparent to-cyan/20 blur-sm" />
             <img
               src="/profile.jpg"
               alt="Raffi Taslakian"
               className="relative h-72 w-60 rounded-2xl border border-border object-cover sm:h-[420px] sm:w-[340px]"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

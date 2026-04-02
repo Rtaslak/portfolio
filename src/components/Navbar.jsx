@@ -37,32 +37,16 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/60 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-bg/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
         <div className="flex items-center gap-4">
-          <a
-            href="https://www.linkedin.com/in/raffi-taslakian/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-text-muted transition-colors hover:text-accent"
-            aria-label="LinkedIn"
-          >
+          <a href="https://www.linkedin.com/in/raffi-taslakian/" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors duration-200 hover:text-accent" aria-label="LinkedIn">
             <LinkedInIcon />
           </a>
-          <a
-            href="https://github.com/Rtaslak"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-text-muted transition-colors hover:text-accent"
-            aria-label="GitHub"
-          >
+          <a href="https://github.com/Rtaslak" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors duration-200 hover:text-accent" aria-label="GitHub">
             <GitHubIcon />
           </a>
-          <a
-            href="mailto:rtaslakian@gmail.com"
-            className="text-text-muted transition-colors hover:text-accent"
-            aria-label="Email"
-          >
+          <a href="mailto:rtaslakian@gmail.com" className="text-text-muted transition-colors duration-200 hover:text-accent" aria-label="Email">
             <EmailIcon />
           </a>
         </div>
@@ -71,30 +55,17 @@ export default function Navbar() {
           <ul className="hidden gap-7 lg:flex">
             {navLinks.map(({ label, href }) => (
               <li key={href}>
-                <a href={href} className="text-[13px] text-text-muted transition-colors hover:text-text-primary">
-                  {label}
-                </a>
+                <a href={href} className="text-[13px] text-text-muted transition-colors duration-200 hover:text-text-primary">{label}</a>
               </li>
             ))}
           </ul>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-accent-border px-4 py-1.5 text-[13px] text-accent transition-all hover:bg-accent-dim"
-          >
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="rounded-md bg-accent px-4 py-1.5 text-[13px] font-medium text-white transition-all duration-200 hover:bg-accent-hover">
             Resume
           </a>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="flex flex-col gap-1.5 lg:hidden"
-            aria-label="Toggle menu"
-          >
-            <span className={`block h-px w-5 bg-text-muted transition-all ${open ? 'translate-y-[3.5px] rotate-45' : ''}`} />
-            <span className={`block h-px w-5 bg-text-muted transition-all ${open ? 'opacity-0' : ''}`} />
-            <span className={`block h-px w-5 bg-text-muted transition-all ${open ? '-translate-y-[3.5px] -rotate-45' : ''}`} />
+          <button onClick={() => setOpen(!open)} className="flex flex-col gap-1.5 lg:hidden" aria-label="Menu">
+            <span className={`block h-px w-5 bg-text-muted transition-all duration-200 ${open ? 'translate-y-[3.5px] rotate-45' : ''}`} />
+            <span className={`block h-px w-5 bg-text-muted transition-all duration-200 ${open ? 'opacity-0' : ''}`} />
+            <span className={`block h-px w-5 bg-text-muted transition-all duration-200 ${open ? '-translate-y-[3.5px] -rotate-45' : ''}`} />
           </button>
         </div>
       </div>
@@ -104,9 +75,7 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4 pt-4">
             {navLinks.map(({ label, href }) => (
               <li key={href}>
-                <a href={href} onClick={() => setOpen(false)} className="text-sm text-text-muted transition-colors hover:text-text-primary">
-                  {label}
-                </a>
+                <a href={href} onClick={() => setOpen(false)} className="text-sm text-text-muted">{label}</a>
               </li>
             ))}
           </ul>
