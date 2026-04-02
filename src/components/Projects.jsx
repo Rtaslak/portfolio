@@ -1,75 +1,27 @@
 const archSteps = [
   { name: 'Zebra FX9600', desc: 'RFID Scan', color: 'text-green' },
   { name: 'AWS IoT Core', desc: 'MQTT Stream', color: 'text-blue' },
-  { name: 'Node.js', desc: 'Event Processing', color: 'text-accent' },
-  { name: 'PostgreSQL', desc: 'Data Layer', color: 'text-blue' },
-  { name: 'Redis', desc: 'Cache & Pub/Sub', color: 'text-green' },
-  { name: 'Socket.IO', desc: 'Real-Time Push', color: 'text-accent' },
-  { name: 'React', desc: 'Live Dashboard', color: 'text-blue' },
+  { name: 'Node.js', desc: 'Processing', color: 'text-accent' },
+  { name: 'PostgreSQL', desc: 'Storage', color: 'text-blue' },
+  { name: 'Redis', desc: 'Cache', color: 'text-green' },
+  { name: 'Socket.IO', desc: 'Push', color: 'text-accent' },
+  { name: 'React', desc: 'Dashboard', color: 'text-blue' },
 ]
 
 const screenshots = [
-  {
-    src: '/screenshots/dashboard.png',
-    title: 'Production Dashboard',
-    desc: 'Real-time overview of all production departments, active orders, tracking stats, system health, and live RFID activity.',
-  },
-  {
-    src: '/screenshots/orders.png',
-    title: 'Order Management',
-    desc: 'Full order lifecycle management with status tracking, priority levels, image galleries, comments, and detailed item specifications.',
-  },
-  {
-    src: '/screenshots/rfid-mapping.png',
-    title: 'RFID Hardware Mapping',
-    desc: 'Visual configuration interface for mapping Zebra FX9600 readers and antennas to physical production stations and departments.',
-  },
-  {
-    src: '/screenshots/tracking.png',
-    title: 'Live Department Tracking',
-    desc: 'Real-time item location across production departments with work timers, stage history, and automated status transitions.',
-  },
+  { src: '/screenshots/dashboard.png', title: 'Production Dashboard', desc: 'Live overview of departments, orders, tracking stats, and RFID activity.' },
+  { src: '/screenshots/orders.png', title: 'Order Management', desc: 'Order lifecycle with status tracking, images, comments, and specifications.' },
+  { src: '/screenshots/rfid-mapping.png', title: 'RFID Hardware Mapping', desc: 'Map readers and antennas to physical production stations.' },
+  { src: '/screenshots/tracking.png', title: 'Department Tracking', desc: 'Real-time item location with work timers and stage history.' },
 ]
 
 const capabilities = [
-  {
-    icon: '📡',
-    title: 'RFID Hardware Integration',
-    desc: 'Zebra FX9600 fixed readers with multi-antenna configurations mapped to physical production stations. Real-time tag capture with configurable read intervals and signal filtering.',
-  },
-  {
-    icon: '⚡',
-    title: 'Event-Driven Pipeline',
-    desc: 'MQTT event streaming via AWS IoT Core processes tag reads in sub-second latency. Events flow through a Node.js processing engine that handles deduplication, location resolution, and state transitions.',
-  },
-  {
-    icon: '🔄',
-    title: 'Real-Time WebSocket Layer',
-    desc: 'Socket.IO delivers instant updates to all connected clients. Redis Pub/Sub ensures consistency across ECS container instances. No polling — pure push architecture.',
-  },
-  {
-    icon: '👥',
-    title: 'Multi-Role Dashboard System',
-    desc: '6 distinct user roles — Admin, Manager, Operator, Salesperson, Jeweler, Designer — each with tailored views, permissions, and workflows built in React/TypeScript.',
-  },
-  {
-    icon: '📊',
-    title: 'Production Analytics',
-    desc: 'Workflow analytics, capacity planning, on-time delivery tracking, department performance metrics, and root cause analysis dashboards for production managers.',
-  },
-  {
-    icon: '☁️',
-    title: 'Cloud Infrastructure',
-    desc: 'AWS ECS (multi-container), RDS PostgreSQL, ElastiCache Redis, S3 image storage, IoT Core, with Docker containers and CI/CD deployment pipelines.',
-  },
-]
-
-const techStack = [
-  { category: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Socket.IO Client'] },
-  { category: 'Backend', items: ['Node.js', 'Express', 'Sequelize ORM', 'Socket.IO', 'MQTT.js'] },
-  { category: 'Data', items: ['PostgreSQL', 'Redis', 'AWS IoT Core', 'JSONB'] },
-  { category: 'Infrastructure', items: ['AWS ECS', 'RDS', 'ElastiCache', 'S3', 'Docker', 'CI/CD'] },
-  { category: 'Hardware', items: ['Zebra FX9600', 'RFID Antennas', 'EPC Gen2 Tags'] },
+  { icon: '📡', title: 'RFID Integration', desc: 'Zebra FX9600 readers with multi-antenna configs mapped to production stations.' },
+  { icon: '⚡', title: 'Event Pipeline', desc: 'MQTT via AWS IoT Core — sub-second processing with deduplication and state transitions.' },
+  { icon: '🔄', title: 'Real-Time Updates', desc: 'Socket.IO + Redis Pub/Sub — instant push to all clients, no polling.' },
+  { icon: '👥', title: '6 User Roles', desc: 'Admin, Manager, Operator, Salesperson, Jeweler, Designer — each with tailored views.' },
+  { icon: '📊', title: 'Analytics', desc: 'Throughput, bottlenecks, capacity planning, and on-time delivery tracking.' },
+  { icon: '☁️', title: 'AWS Infrastructure', desc: 'ECS, RDS, ElastiCache, S3, IoT Core — Dockerized with CI/CD.' },
 ]
 
 export default function Projects() {
@@ -89,114 +41,94 @@ export default function Projects() {
                 <span className="text-xs text-accent">Production System · In Use Daily</span>
               </div>
               <h3 className="mt-4 text-2xl font-bold tracking-tight text-text-primary sm:text-3xl lg:text-4xl">
-                RFID-Based Real-Time<br />Production Tracking
+                RFID Real-Time<br />Production Tracking
               </h3>
-              <p className="mt-2 text-accent">Jason of Beverly Hills — Luxury Jewelry Manufacturing</p>
-              <p className="mt-5 max-w-xl leading-relaxed text-text-secondary">
-                A full-stack production tracking platform that replaced manual
-                paper-based workflows with real-time RFID tracking across
-                an entire manufacturing facility. The system processes thousands
-                of tag events daily, giving production teams, managers, salespeople,
-                and designers live visibility into every order's journey.
+              <p className="mt-2 text-accent">Jason of Beverly Hills</p>
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-text-secondary">
+                Replaced paper-based tracking with real-time RFID across
+                an entire luxury jewelry manufacturing facility. Thousands
+                of tag events processed daily.
               </p>
             </div>
 
-            {/* Metrics */}
             <div className="flex gap-10 lg:flex-col lg:gap-8 lg:text-right">
               <div>
                 <span className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">30%</span>
-                <p className="mt-1 text-sm text-text-muted">Labor efficiency<br />increase</p>
+                <p className="mt-1 text-sm text-text-muted">More efficient</p>
               </div>
               <div>
                 <span className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">90%</span>
-                <p className="mt-1 text-sm text-text-muted">Tracking error<br />reduction</p>
+                <p className="mt-1 text-sm text-text-muted">Fewer errors</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* The Problem & Solution */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2">
-          <div className="rounded-xl border border-border bg-bg-card p-8">
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-text-muted">The Problem</p>
-            <p className="mt-4 text-lg font-semibold text-text-primary">
-              A luxury jewelry manufacturer was running its entire production floor on paper.
-            </p>
-            <ul className="mt-4 space-y-3">
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+        {/* Problem → Solution */}
+        <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="rounded-xl border border-border bg-bg-card p-7">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-text-muted">Problem</p>
+            <ul className="mt-4 space-y-2.5">
+              <li className="flex items-start gap-3 text-sm text-text-secondary">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
-                No visibility into where orders were in the production process
+                No visibility into order location or production status
               </li>
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+              <li className="flex items-start gap-3 text-sm text-text-secondary">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
-                Manual tracking caused constant errors — items got lost between departments
+                Items lost between departments — constant manual errors
               </li>
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+              <li className="flex items-start gap-3 text-sm text-text-secondary">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
-                Managers couldn't identify bottlenecks or measure department performance
-              </li>
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
-                Salespeople had no way to check order status without calling the floor
+                No data on bottlenecks or department performance
               </li>
             </ul>
           </div>
 
-          <div className="rounded-xl border border-border bg-bg-card p-8">
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-text-muted">The Solution</p>
-            <p className="mt-4 text-lg font-semibold text-text-primary">
-              I built a real-time RFID tracking system that automated the entire workflow.
-            </p>
-            <ul className="mt-4 space-y-3">
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+          <div className="rounded-xl border border-border bg-bg-card p-7">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-text-muted">Solution</p>
+            <ul className="mt-4 space-y-2.5">
+              <li className="flex items-start gap-3 text-sm text-text-secondary">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                RFID tags on every order — automatic tracking as items move between stations
+                RFID tags on every order — automatic tracking between stations
               </li>
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+              <li className="flex items-start gap-3 text-sm text-text-secondary">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                Live dashboard shows every order's location, status, and time at each stage
+                Live dashboard with location, status, and time per stage
               </li>
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+              <li className="flex items-start gap-3 text-sm text-text-secondary">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                Managers get analytics on throughput, bottlenecks, and on-time delivery
-              </li>
-              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                6 role-based portals — each team sees exactly what they need
+                6 role-based portals — each team sees what they need
               </li>
             </ul>
           </div>
         </div>
 
         {/* Results */}
-        <div className="mt-12 rounded-xl border border-green/20 bg-green/[0.03] p-8">
+        <div className="mt-10 rounded-xl border border-green/20 bg-green/[0.03] p-7">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-green/60">Results</p>
-          <div className="mt-6 grid gap-8 sm:grid-cols-4">
+          <div className="mt-5 grid gap-6 sm:grid-cols-4">
             <div>
-              <span className="text-3xl font-bold text-text-primary sm:text-4xl">30%</span>
-              <p className="mt-1 text-sm text-text-secondary">increase in labor efficiency across the production floor</p>
+              <span className="text-3xl font-bold text-text-primary">30%</span>
+              <p className="mt-1 text-sm text-text-secondary">labor efficiency increase</p>
             </div>
             <div>
-              <span className="text-3xl font-bold text-text-primary sm:text-4xl">90%</span>
-              <p className="mt-1 text-sm text-text-secondary">reduction in manual tracking errors and lost items</p>
+              <span className="text-3xl font-bold text-text-primary">90%</span>
+              <p className="mt-1 text-sm text-text-secondary">fewer tracking errors</p>
             </div>
             <div>
-              <span className="text-3xl font-bold text-text-primary sm:text-4xl">1000s</span>
-              <p className="mt-1 text-sm text-text-secondary">of RFID tag events processed and tracked daily</p>
+              <span className="text-3xl font-bold text-text-primary">1000s</span>
+              <p className="mt-1 text-sm text-text-secondary">RFID events daily</p>
             </div>
             <div>
-              <span className="text-3xl font-bold text-text-primary sm:text-4xl">6</span>
-              <p className="mt-1 text-sm text-text-secondary">distinct user roles with tailored dashboards and permissions</p>
+              <span className="text-3xl font-bold text-text-primary">6</span>
+              <p className="mt-1 text-sm text-text-secondary">user roles supported</p>
             </div>
           </div>
         </div>
 
         {/* Screenshots */}
-        <div className="mt-16">
-          <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-text-muted">
-            Application
-          </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+        <div className="mt-14">
+          <div className="grid gap-5 sm:grid-cols-2">
             {screenshots.map(({ src, title, desc }) => (
               <div key={title} className="glow-card group overflow-hidden rounded-xl border border-border bg-bg-card">
                 <div className="aspect-video overflow-hidden bg-bg-elevated flex items-center justify-center">
@@ -209,77 +141,40 @@ export default function Projects() {
                       e.target.nextSibling.style.display = 'flex'
                     }}
                   />
-                  <div className="hidden items-center justify-center h-full w-full text-text-muted text-sm">
-                    {title}
-                  </div>
+                  <div className="hidden items-center justify-center h-full w-full text-text-muted text-sm">{title}</div>
                 </div>
                 <div className="p-5">
                   <h4 className="text-sm font-semibold text-text-primary">{title}</h4>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-text-muted">{desc}</p>
+                  <p className="mt-1 text-[13px] text-text-muted">{desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* What I Built */}
-        <div className="mt-16">
-          <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-text-muted">
-            What I Built
-          </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map(({ icon, title, desc }) => (
-              <div key={title} className="glow-card rounded-xl border border-border bg-bg-card p-6">
-                <span className="text-2xl">{icon}</span>
-                <h4 className="mt-3 text-sm font-semibold text-text-primary">{title}</h4>
-                <p className="mt-2 text-[13px] leading-relaxed text-text-muted">{desc}</p>
-              </div>
-            ))}
-          </div>
+        {/* Capabilities */}
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {capabilities.map(({ icon, title, desc }) => (
+            <div key={title} className="glow-card rounded-xl border border-border bg-bg-card p-5">
+              <span className="text-xl">{icon}</span>
+              <h4 className="mt-2 text-sm font-semibold text-text-primary">{title}</h4>
+              <p className="mt-1 text-[13px] text-text-muted">{desc}</p>
+            </div>
+          ))}
         </div>
 
         {/* Architecture */}
-        <div className="mt-16">
-          <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-text-muted">
-            System Architecture
-          </p>
-          <div className="mt-8 flex justify-center overflow-x-auto pb-4">
-            <div className="flex items-center gap-2 sm:gap-3 min-w-max">
-              {archSteps.map((step, i) => (
-                <div key={step.name} className="flex items-center gap-2 sm:gap-3">
-                  <div className="rounded-lg border border-border bg-bg-card px-4 py-3 text-center sm:px-6 sm:py-4">
-                    <div className={`font-mono text-xs font-semibold sm:text-sm ${step.color}`}>
-                      {step.name}
-                    </div>
-                    <div className="mt-1 font-mono text-[10px] text-text-muted sm:text-xs">
-                      {step.desc}
-                    </div>
-                  </div>
-                  {i < archSteps.length - 1 && (
-                    <span className="font-mono text-sm text-text-muted/40 sm:text-lg">→</span>
-                  )}
+        <div className="mt-14 flex justify-center overflow-x-auto pb-4">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-max">
+            {archSteps.map((step, i) => (
+              <div key={step.name} className="flex items-center gap-2 sm:gap-3">
+                <div className="rounded-lg border border-border bg-bg-card px-4 py-3 text-center sm:px-5 sm:py-3.5">
+                  <div className={`font-mono text-xs font-semibold sm:text-sm ${step.color}`}>{step.name}</div>
+                  <div className="mt-0.5 font-mono text-[10px] text-text-muted sm:text-xs">{step.desc}</div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Full Tech Stack */}
-        <div className="mt-16">
-          <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-text-muted">
-            Tech Stack
-          </p>
-          <div className="mx-auto mt-8 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {techStack.map(({ category, items }) => (
-              <div key={category}>
-                <p className="text-xs font-medium text-text-secondary">{category}</p>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {items.map((item) => (
-                    <span key={item} className="rounded-full border border-accent-border px-3 py-1 text-xs text-accent">
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                {i < archSteps.length - 1 && (
+                  <span className="font-mono text-sm text-text-muted/40 sm:text-lg">→</span>
+                )}
               </div>
             ))}
           </div>

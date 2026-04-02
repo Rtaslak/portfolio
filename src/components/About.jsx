@@ -1,6 +1,6 @@
 const highlights = [
   { value: '4+', label: 'Years Experience' },
-  { value: '1000s', label: 'Daily RFID Events Processed' },
+  { value: '1000s', label: 'Daily Events Processed' },
   { value: '50+', label: 'Components Built' },
   { value: '6', label: 'User Roles Supported' },
 ]
@@ -24,21 +24,17 @@ export default function About() {
 
         <div className="flex-1">
           <p className="text-lg leading-relaxed text-text-secondary sm:text-xl sm:leading-relaxed">
-            Full-stack engineer focused on building real-time, production-grade
-            systems that connect physical operations with modern software. I
-            own systems end to end — from hardware integration and MQTT data
-            pipelines to React dashboards and AWS deployment.
+            I build real-time systems that connect hardware to software. I own
+            projects end to end — from RFID readers and MQTT pipelines to React
+            dashboards and AWS infrastructure.
           </p>
 
           <p className="mt-5 leading-relaxed text-text-secondary">
-            At Jason of Beverly Hills, I designed and deployed a full-stack
-            RFID-based order tracking platform for luxury jewelry manufacturing.
-            The system integrates Zebra FX9600 readers, processes thousands of
-            real-time tag events through AWS IoT Core, and delivers live
-            updates across multi-role dashboards used by production teams,
-            managers, salespeople, and designers.
+            At Jason of Beverly Hills, I built a full-stack RFID tracking
+            platform for luxury jewelry manufacturing — Zebra FX9600 readers,
+            real-time event processing through AWS IoT Core, and live
+            multi-role dashboards used daily by the entire production team.
           </p>
-
 
           <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
             {highlights.map(({ value, label }) => (

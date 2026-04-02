@@ -1,36 +1,10 @@
 const skillAreas = [
-  {
-    title: 'Languages',
-    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'SQL'],
-  },
-  {
-    title: 'Frontend',
-    skills: ['React', 'Tailwind CSS', 'shadcn/ui', 'Socket.IO Client', 'Responsive Design'],
-  },
-  {
-    title: 'Backend & APIs',
-    skills: ['Node.js', 'Express', 'REST APIs', 'WebSockets', 'Sequelize ORM', 'MQTT.js'],
-  },
-  {
-    title: 'Databases & Caching',
-    skills: ['PostgreSQL', 'MySQL', 'Redis', 'JSONB', 'Data Modeling'],
-  },
-  {
-    title: 'Architecture & Systems',
-    skills: ['Event-Driven Architecture', 'Real-Time Systems', 'Pub/Sub Patterns', 'Microservices'],
-  },
-  {
-    title: 'IoT & Hardware',
-    skills: ['RFID Systems', 'Zebra FX9600', 'MQTT Protocol', 'AWS IoT Core', 'Hardware Integration'],
-  },
-  {
-    title: 'Cloud & DevOps',
-    skills: ['AWS (ECS, RDS, S3, ElastiCache)', 'Docker', 'CI/CD Pipelines', 'Nginx', 'Linux'],
-  },
-  {
-    title: 'Tools & Practices',
-    skills: ['Git', 'VS Code', 'AI-Assisted Development', 'Agile', 'System Design'],
-  },
+  { title: 'Languages', skills: ['JavaScript', 'TypeScript', 'Python', 'SQL'] },
+  { title: 'Frontend', skills: ['React', 'Tailwind CSS', 'Socket.IO'] },
+  { title: 'Backend', skills: ['Node.js', 'Express', 'REST APIs', 'WebSockets'] },
+  { title: 'Data', skills: ['PostgreSQL', 'Redis', 'Sequelize'] },
+  { title: 'IoT', skills: ['RFID', 'MQTT', 'AWS IoT Core', 'Zebra FX9600'] },
+  { title: 'Cloud', skills: ['AWS ECS', 'RDS', 'S3', 'Docker', 'CI/CD'] },
 ]
 
 export default function Skills() {
@@ -41,11 +15,11 @@ export default function Skills() {
         <span className="text-accent">Skills</span>
       </h2>
 
-      <div className="mx-auto mt-14 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-14 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {skillAreas.map(({ title, skills }) => (
           <div key={title}>
             <h3 className="text-[13px] font-semibold text-text-secondary">{title}</h3>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-3 space-y-1.5">
               {skills.map((skill) => (
                 <li key={skill} className="flex items-center gap-2 text-sm text-text-muted">
                   <span className="h-1 w-1 rounded-full bg-accent/50" />

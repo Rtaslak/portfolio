@@ -1,7 +1,6 @@
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center px-6 sm:px-8">
-      {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.03] blur-[120px]" />
       </div>
@@ -23,23 +22,16 @@ export default function Hero() {
             <span className="text-text-secondary">RFID & IoT Systems</span>
           </p>
 
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-text-secondary sm:text-lg">
-            I build real-time, production-grade systems that connect physical
-            operations with modern software — from RFID hardware on the factory
-            floor to live dashboards in the cloud.
+          <p className="mt-6 max-w-md text-base leading-relaxed text-text-secondary">
+            I connect physical operations with software — RFID hardware
+            on the factory floor to live dashboards in the cloud.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#project"
-              className="rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20"
-            >
+            <a href="#project" className="rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20">
               See My Work
             </a>
-            <a
-              href="#contact"
-              className="rounded-lg border border-border px-6 py-3 text-sm text-text-secondary transition-colors hover:border-accent-border hover:text-text-primary"
-            >
+            <a href="#contact" className="rounded-lg border border-border px-6 py-3 text-sm text-text-secondary transition-colors hover:border-accent-border hover:text-text-primary">
               Get in Touch
             </a>
           </div>

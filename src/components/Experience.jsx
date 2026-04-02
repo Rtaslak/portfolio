@@ -5,32 +5,31 @@ const experiences = [
     company: 'Jason of Beverly Hills',
     location: 'Los Angeles, CA',
     bullets: [
-      'Designed and deployed a full-stack RFID-based order tracking and manufacturing workflow platform, integrating Zebra FX9600 readers and processing thousands of real-time tag events daily.',
-      'Developed a scalable backend architecture using Node.js, Express, PostgreSQL, and Redis to support secure tracking, data storage, and real-time event processing.',
-      'Engineered MQTT-based event streaming pipelines through AWS IoT Core for sub-second data delivery and reliable processing of RFID tag events.',
-      'Built a React/TypeScript dashboard with 50+ components for real-time monitoring, system alerts, department tracking, workflow analytics, and multi-role access control.',
-      'Managed AWS infrastructure (ECS, RDS, ElastiCache, S3, IoT Core) with Docker containerization and CI/CD deployment pipelines.',
+      'Built a full-stack RFID tracking platform — Zebra FX9600 readers processing thousands of tag events daily.',
+      'Node.js + PostgreSQL + Redis backend with MQTT event streaming through AWS IoT Core.',
+      'React/TypeScript dashboard with 50+ components — real-time monitoring, analytics, and multi-role access.',
+      'AWS infrastructure: ECS, RDS, ElastiCache, S3, IoT Core, Docker, CI/CD.',
     ],
-    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'AWS', 'MQTT', 'Docker', 'Socket.IO'],
-    impact: '30% increase in labor efficiency · 90% reduction in manual tracking errors',
+    tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'AWS', 'MQTT', 'Docker'],
+    impact: '30% efficiency increase · 90% fewer tracking errors',
   },
   {
     period: 'May 2019 — Aug 2020',
-    title: 'Software Developer / Sales',
+    title: 'Software Developer',
     company: 'Darksight, ME Infosec',
     location: 'Beirut, Lebanon',
     bullets: [
-      'Designed and tested custom SIEM platform modules for enterprise cybersecurity monitoring.',
-      'Wrote and executed detailed test cases, identifying key system vulnerabilities and improving product reliability.',
+      'Designed and tested custom SIEM modules for cybersecurity monitoring.',
+      'Identified system vulnerabilities through detailed test case execution.',
     ],
-    tags: ['Security', 'SIEM', 'Testing', 'Vulnerability Analysis'],
+    tags: ['Security', 'SIEM', 'Testing'],
   },
 ]
 
 const education = {
   degree: 'B.S. Computer & Communication Engineering',
   school: 'Lebanese International University',
-  location: 'Beqaa Valley, Lebanon',
+  location: 'Lebanon',
   year: '2021',
 }
 
@@ -56,11 +55,9 @@ export default function Experience() {
               <h3 className="text-lg font-semibold text-text-primary">{title}</h3>
               <p className="mt-0.5 text-accent">{company}</p>
 
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-4 space-y-2">
                 {bullets.map((b, i) => (
-                  <li key={i} className="text-sm leading-relaxed text-text-secondary">
-                    {b}
-                  </li>
+                  <li key={i} className="text-sm leading-relaxed text-text-secondary">{b}</li>
                 ))}
               </ul>
 
@@ -73,16 +70,13 @@ export default function Experience() {
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                  <span key={tag} className="rounded-full border border-accent-border px-3 py-1 text-xs text-accent">
-                    {tag}
-                  </span>
+                  <span key={tag} className="rounded-full border border-accent-border px-3 py-1 text-xs text-accent">{tag}</span>
                 ))}
               </div>
             </div>
           </div>
         ))}
 
-        {/* Education */}
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-12">
           <div className="shrink-0 sm:w-44 sm:pt-1">
             <p className="text-sm text-text-muted">{education.year}</p>
