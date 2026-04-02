@@ -2,16 +2,14 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const screenshots = [
-  { src: '/screenshots/dashboard.png', title: 'Production Dashboard', desc: 'Live overview of departments, orders, and RFID activity.' },
-  { src: '/screenshots/orders.png', title: 'Order Management', desc: 'Order lifecycle with status, images, and specifications.' },
-  { src: '/screenshots/rfid-mapping.png', title: 'RFID Hardware Mapping', desc: 'Map readers and antennas to production stations.' },
-  { src: '/screenshots/tracking.png', title: 'Department Tracking', desc: 'Real-time item location with work timers.' },
-  { src: '/screenshots/screenshot5.png', title: 'Screenshot 5', desc: 'Description here.' },
-  { src: '/screenshots/screenshot6.png', title: 'Screenshot 6', desc: 'Description here.' },
-  { src: '/screenshots/screenshot7.png', title: 'Screenshot 7', desc: 'Description here.' },
-  { src: '/screenshots/screenshot8.png', title: 'Screenshot 8', desc: 'Description here.' },
-  { src: '/screenshots/screenshot9.png', title: 'Screenshot 9', desc: 'Description here.' },
-  { src: '/screenshots/screenshot10.png', title: 'Screenshot 10', desc: 'Description here.' },
+  { src: '/screenshots/login.png', title: 'Secure Authentication', desc: 'Login with email/password or Google SSO. Role-based access control.' },
+  { src: '/screenshots/dashboard.png', title: 'Multi-Location Dashboard', desc: 'Overview of all facilities — departments, active orders, and total items per location.' },
+  { src: '/screenshots/orders.png', title: 'Order Management', desc: '415 orders tracked with status, store, product type, priority, and due dates.' },
+  { src: '/screenshots/rfid-mapping.png', title: 'RFID Reader Mapping', desc: 'Visual mapping of Zebra FX9600 antennas to departments — tag assignment, hold stations, and gate zones.' },
+  { src: '/screenshots/orders-gallery.png', title: 'Product Image Gallery', desc: 'High-res product images for each order — luxury jewelry pieces with status and pricing.' },
+  { src: '/screenshots/diagnostics.png', title: 'System Diagnostics', desc: 'Real-time health monitoring — API, Redis, MQTT, WebSocket, and ECS container status.' },
+  { src: '/screenshots/design-studio.png', title: 'AI Design Studio', desc: 'AI-powered jewelry design tool with style parameters, gallery, and prompt-based generation.' },
+  { src: '/screenshots/approval-queue.png', title: 'Approval Queue', desc: 'Managers review and approve/reject submitted orders with images before production begins.' },
 ]
 
 export default function Gallery() {
