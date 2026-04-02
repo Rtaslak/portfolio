@@ -39,12 +39,6 @@ export default function About() {
             managers, salespeople, and designers.
           </p>
 
-          <p className="mt-5 leading-relaxed text-text-secondary">
-            I care about clean architecture, reliable infrastructure, and
-            building systems that solve real problems. Before Jason of Beverly
-            Hills, I worked in cybersecurity — designing and testing SIEM
-            platform modules at Darksight, ME Infosec.
-          </p>
 
           <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
             {highlights.map(({ value, label }) => (
