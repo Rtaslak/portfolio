@@ -115,6 +115,82 @@ export default function Projects() {
           </div>
         </div>
 
+        {/* The Problem & Solution */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          <div className="rounded-xl border border-border bg-bg-card p-8">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-text-muted">The Problem</p>
+            <p className="mt-4 text-lg font-semibold text-text-primary">
+              A luxury jewelry manufacturer was running its entire production floor on paper.
+            </p>
+            <ul className="mt-4 space-y-3">
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
+                No visibility into where orders were in the production process
+              </li>
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
+                Manual tracking caused constant errors — items got lost between departments
+              </li>
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
+                Managers couldn't identify bottlenecks or measure department performance
+              </li>
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400/70" />
+                Salespeople had no way to check order status without calling the floor
+              </li>
+            </ul>
+          </div>
+
+          <div className="rounded-xl border border-border bg-bg-card p-8">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-text-muted">The Solution</p>
+            <p className="mt-4 text-lg font-semibold text-text-primary">
+              I built a real-time RFID tracking system that automated the entire workflow.
+            </p>
+            <ul className="mt-4 space-y-3">
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
+                RFID tags on every order — automatic tracking as items move between stations
+              </li>
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
+                Live dashboard shows every order's location, status, and time at each stage
+              </li>
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
+                Managers get analytics on throughput, bottlenecks, and on-time delivery
+              </li>
+              <li className="flex items-start gap-3 text-sm leading-relaxed text-text-secondary">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
+                6 role-based portals — each team sees exactly what they need
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Results */}
+        <div className="mt-12 rounded-xl border border-green/20 bg-green/[0.03] p-8">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-green/60">Results</p>
+          <div className="mt-6 grid gap-8 sm:grid-cols-4">
+            <div>
+              <span className="text-3xl font-bold text-text-primary sm:text-4xl">30%</span>
+              <p className="mt-1 text-sm text-text-secondary">increase in labor efficiency across the production floor</p>
+            </div>
+            <div>
+              <span className="text-3xl font-bold text-text-primary sm:text-4xl">90%</span>
+              <p className="mt-1 text-sm text-text-secondary">reduction in manual tracking errors and lost items</p>
+            </div>
+            <div>
+              <span className="text-3xl font-bold text-text-primary sm:text-4xl">1000s</span>
+              <p className="mt-1 text-sm text-text-secondary">of RFID tag events processed and tracked daily</p>
+            </div>
+            <div>
+              <span className="text-3xl font-bold text-text-primary sm:text-4xl">6</span>
+              <p className="mt-1 text-sm text-text-secondary">distinct user roles with tailored dashboards and permissions</p>
+            </div>
+          </div>
+        </div>
+
         {/* Screenshots */}
         <div className="mt-16">
           <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-text-muted">
