@@ -1,4 +1,5 @@
 import FadeIn from './FadeIn'
+import Gallery from './Gallery'
 
 const archSteps = [
   { name: 'Zebra FX9600', desc: 'RFID Scan', color: 'text-green' },
@@ -10,18 +11,6 @@ const archSteps = [
   { name: 'React', desc: 'Dashboard', color: 'text-cyan' },
 ]
 
-const screenshots = [
-  { src: '/screenshots/dashboard.png', title: 'Production Dashboard', desc: 'Live overview of departments, orders, and RFID activity.' },
-  { src: '/screenshots/orders.png', title: 'Order Management', desc: 'Order lifecycle with status, images, and specifications.' },
-  { src: '/screenshots/rfid-mapping.png', title: 'RFID Hardware Mapping', desc: 'Map readers and antennas to production stations.' },
-  { src: '/screenshots/tracking.png', title: 'Department Tracking', desc: 'Real-time item location with work timers.' },
-  { src: '/screenshots/screenshot5.png', title: 'Screenshot 5', desc: 'Description here.' },
-  { src: '/screenshots/screenshot6.png', title: 'Screenshot 6', desc: 'Description here.' },
-  { src: '/screenshots/screenshot7.png', title: 'Screenshot 7', desc: 'Description here.' },
-  { src: '/screenshots/screenshot8.png', title: 'Screenshot 8', desc: 'Description here.' },
-  { src: '/screenshots/screenshot9.png', title: 'Screenshot 9', desc: 'Description here.' },
-  { src: '/screenshots/screenshot10.png', title: 'Screenshot 10', desc: 'Description here.' },
-]
 
 const capabilities = [
   { icon: '📡', title: 'RFID Integration', desc: 'Zebra FX9600 readers mapped to production stations.' },
@@ -143,34 +132,10 @@ export default function Projects() {
           </div>
         </FadeIn>
 
-        {/* Screenshots — full-width stacked */}
-        <div className="mt-16 space-y-6">
-          {screenshots.map(({ src, title, desc }, i) => (
-            <FadeIn key={title} delay={i * 0.05}>
-              <div className="group overflow-hidden rounded-xl border border-border bg-bg-card transition-all duration-300 hover:border-border-accent/30">
-                <div className="aspect-[16/9] overflow-hidden bg-bg-elevated flex items-center justify-center">
-                  <img
-                    src={src}
-                    alt={title}
-                    className="h-full w-full object-cover object-top opacity-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-[1.01]"
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.nextSibling.style.display = 'flex'
-                    }}
-                  />
-                  <div className="hidden items-center justify-center h-full w-full text-text-muted text-sm">{title}</div>
-                </div>
-                <div className="flex items-baseline justify-between p-5">
-                  <div>
-                    <h4 className="text-sm font-semibold text-text-primary">{title}</h4>
-                    <p className="mt-1 text-[13px] text-text-muted">{desc}</p>
-                  </div>
-                  <span className="text-xs text-text-muted shrink-0 ml-4">{i + 1}/{screenshots.length}</span>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
+        {/* Screenshot Gallery */}
+        <FadeIn>
+          <Gallery />
+        </FadeIn>
 
         {/* Capabilities */}
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
