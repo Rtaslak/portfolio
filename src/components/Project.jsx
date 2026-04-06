@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import FadeIn from './FadeIn'
 
 const screenshots = [
+  { src: '/screenshots/login.png', title: 'Authentication', desc: 'Secure login with email/password or Google SSO. Role-based access determines what each user sees after sign-in.' },
   { src: '/screenshots/dashboard.png', title: 'Multi-Location Dashboard', desc: 'Live overview across 4 facilities: Downtown, Beverly Wilshire, HQ, and Las Vegas. Department counts, active orders, and total items at a glance.' },
   { src: '/screenshots/orders.png', title: 'Order Management', desc: '415+ orders tracked end to end. Status, store location, product type, priority, pricing, and due dates. Filterable and searchable.' },
   { src: '/screenshots/rfid-mapping.png', title: 'RFID Reader Mapping', desc: 'Visual wiring of Zebra FX9600 antennas to physical departments. Color-coded connections show tag assignment zones, hold stations, and gate areas.' },
@@ -10,7 +11,6 @@ const screenshots = [
   { src: '/screenshots/approval-queue.png', title: 'Approval Queue', desc: 'Submitted orders land here for manager review. Approve, reject, or request changes with product images and submitter info.' },
   { src: '/screenshots/design-studio.png', title: 'AI Design Studio', desc: 'AI-powered jewelry design tool. Describe a piece, set style parameters, and generate design concepts with a reference gallery.' },
   { src: '/screenshots/diagnostics.png', title: 'System Diagnostics', desc: 'Real-time health of every service: API, Redis cache, MQTT broker, WebSocket connections, and ECS container status.' },
-  { src: '/screenshots/login.png', title: 'Authentication', desc: 'Secure login with email/password or Google SSO. Role-based access determines what each user sees after sign-in.' },
 ]
 
 const archSteps = [
