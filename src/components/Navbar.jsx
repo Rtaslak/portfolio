@@ -41,9 +41,6 @@ export default function Navbar() {
           <a href="https://www.linkedin.com/in/raffi-taslakian/" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors duration-200 hover:text-accent" aria-label="LinkedIn">
             <LinkedInIcon />
           </a>
-          <a href="https://github.com/Rtaslak" target="_blank" rel="noopener noreferrer" className="text-text-muted transition-colors duration-200 hover:text-accent" aria-label="GitHub">
-            <GitHubIcon />
-          </a>
           <a href="mailto:rtaslakian@gmail.com" className="text-text-muted transition-colors duration-200 hover:text-accent" aria-label="Email">
             <EmailIcon />
           </a>

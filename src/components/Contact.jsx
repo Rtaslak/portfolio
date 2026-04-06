@@ -37,9 +37,6 @@ export default function Contact() {
             <a href="https://www.linkedin.com/in/raffi-taslakian/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-text-muted transition-all duration-200 hover:border-text-muted hover:text-text-primary">
               <LinkedInIcon /> LinkedIn
             </a>
-            <a href="https://github.com/Rtaslak" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-text-muted transition-all duration-200 hover:border-text-muted hover:text-text-primary">
-              <GitHubIcon /> GitHub
-            </a>
           </div>
         </FadeIn>
       </div>
