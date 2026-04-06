@@ -100,7 +100,7 @@ export default function Project() {
         <FadeIn>
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-text-muted text-center">Featured Project</p>
           <h2 className="mt-4 text-center text-3xl font-bold tracking-tight sm:text-4xl text-text-primary">
-            Real-Time RFID Production Tracking
+            RFID-Powered Manufacturing Platform
           </h2>
           <p className="mt-2 text-center text-accent">Jason of Beverly Hills — Luxury Jewelry Manufacturing</p>
         </FadeIn>
@@ -144,23 +144,23 @@ export default function Project() {
           <FadeIn delay={0.2}>
             <div className="rounded-xl border border-border bg-bg-card p-7 h-full">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-text-muted">What I Built</p>
-              <p className="mt-4 text-[15px] font-medium text-text-primary">A full-stack RFID tracking system — designed, built, and deployed by me.</p>
+              <p className="mt-4 text-[15px] font-medium text-text-primary">I built the entire operations platform — designed, developed, and deployed solo.</p>
               <ul className="mt-4 space-y-2.5">
                 <li className="flex items-start gap-3 text-sm text-text-secondary">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                  RFID tags on every order — automatic location tracking
+                  Automatic RFID tracking — every order's location updated in real time
                 </li>
                 <li className="flex items-start gap-3 text-sm text-text-secondary">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                  Live dashboards showing every order's location and status
+                  6 role-based portals — each team gets exactly the tools they need
                 </li>
                 <li className="flex items-start gap-3 text-sm text-text-secondary">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                  6 role-based portals — admins, managers, salespeople, jewelers, designers, operators
+                  Jeweler time tracking, scheduling, estimated delivery predictions
                 </li>
                 <li className="flex items-start gap-3 text-sm text-text-secondary">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                  Analytics, approval workflows, AI design tools, system diagnostics
+                  AI design studio, approval workflows, analytics dashboards
                 </li>
               </ul>
             </div>
@@ -191,6 +191,40 @@ export default function Project() {
             </div>
           </div>
         </FadeIn>
+
+        {/* --- PLATFORM FEATURES --- */}
+        <FadeIn>
+          <div className="mt-16">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-text-muted text-center">
+              Not Just Tracking — A Full Operations Platform
+            </p>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-text-secondary">
+              What started as an RFID tracking tool evolved into the system that runs
+              the entire production floor. Every role has their own view. Every workflow is automated.
+            </p>
+          </div>
+        </FadeIn>
+
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { title: 'Live RFID Tracking', desc: 'Every tagged order is tracked automatically as it moves between departments. No scanning, no manual input.' },
+            { title: 'Work Timers', desc: 'Each jeweler\'s time per order is tracked at every station — managers see who\'s fast, who\'s stuck, and where bottlenecks form.' },
+            { title: 'Estimated Finish Time', desc: 'Predicts when orders will be completed based on historical stage durations and current workload.' },
+            { title: 'Salesperson Portal', desc: 'Salespeople submit orders with images and specs, then track their status in real time — no floor visits, no phone calls.' },
+            { title: 'Manager Command Center', desc: 'Department-level view of all active orders, jeweler assignments, throughput metrics, and on-time delivery rates.' },
+            { title: 'Jeweler Scheduling', desc: 'Pre-assign orders to specific jewelers. Managers set the queue, jewelers see their workload.' },
+            { title: 'Operator Dashboard', desc: 'Floor operators see only what they need — incoming items, current station status, and tag assignment tools.' },
+            { title: 'Approval Queue', desc: 'Orders go through a review workflow. Managers approve, reject, or request changes before production starts.' },
+            { title: 'AI Design Studio', desc: 'AI-powered tool that generates jewelry design concepts from text prompts with style parameters and a reference gallery.' },
+          ].map(({ title, desc }, i) => (
+            <FadeIn key={title} delay={i * 0.03}>
+              <div className="rounded-xl border border-border bg-bg-card p-5 h-full transition-all duration-200 hover:border-accent/20">
+                <h4 className="text-sm font-semibold text-text-primary">{title}</h4>
+                <p className="mt-1.5 text-[13px] leading-relaxed text-text-muted">{desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
 
         {/* --- SCREENSHOTS --- */}
         <FadeIn>
