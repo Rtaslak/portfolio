@@ -207,15 +207,21 @@ export default function Project() {
 
         <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: 'Live RFID Tracking', desc: 'Every tagged order is tracked automatically as it moves between departments. No scanning, no manual input.' },
-            { title: 'Work Timers', desc: 'Each jeweler\'s time per order is tracked at every station — managers see who\'s fast, who\'s stuck, and where bottlenecks form.' },
-            { title: 'Estimated Finish Time', desc: 'Predicts when orders will be completed based on historical stage durations and current workload.' },
-            { title: 'Salesperson Portal', desc: 'Salespeople submit orders with images and specs, then track their status in real time — no floor visits, no phone calls.' },
-            { title: 'Manager Command Center', desc: 'Department-level view of all active orders, jeweler assignments, throughput metrics, and on-time delivery rates.' },
-            { title: 'Jeweler Scheduling', desc: 'Pre-assign orders to specific jewelers. Managers set the queue, jewelers see their workload.' },
-            { title: 'Operator Dashboard', desc: 'Floor operators see only what they need — incoming items, current station status, and tag assignment tools.' },
-            { title: 'Approval Queue', desc: 'Orders go through a review workflow. Managers approve, reject, or request changes before production starts.' },
-            { title: 'AI Design Studio', desc: 'AI-powered tool that generates jewelry design concepts from text prompts with style parameters and a reference gallery.' },
+            { title: 'Live RFID Tracking', desc: 'Every tagged order tracked automatically as it moves between departments. No scanning, no manual input.' },
+            { title: 'Work Timers', desc: 'Tracks each jeweler\'s time per order at every station — who\'s fast, who\'s stuck, where bottlenecks form.' },
+            { title: 'Estimated Finish Time', desc: 'Predicts completion based on historical stage durations and current workload. Late orders flagged automatically.' },
+            { title: 'SMS & Email Alerts', desc: 'Automated notifications for order updates, delays, and status changes. Configurable per role with alert preferences.' },
+            { title: 'Salesperson Portal', desc: 'Submit orders with images and specs, track status in real time. No floor visits, no phone calls.' },
+            { title: 'Manager Command Center', desc: 'Active orders, jeweler assignments, throughput metrics, on-time delivery rates, and capacity planning.' },
+            { title: 'Jeweler Scheduling', desc: 'Pre-assign orders to jewelers. Managers set the queue, jewelers see their workload on screen and TV displays.' },
+            { title: 'Production Floor TV', desc: 'Live TV displays mounted on the floor showing current orders, department queues, and jeweler assignments.' },
+            { title: 'Approval Queue', desc: 'Orders go through manager review before production. Approve, reject, or request changes with full context.' },
+            { title: 'Workflow Analytics', desc: 'Throughput analysis, department comparisons, on-time delivery tracking, and root cause analysis for delays.' },
+            { title: 'Offsite Tracking', desc: 'Track orders sent to external vendors. Full chain of custody from leaving the facility to return.' },
+            { title: 'AI Design Studio', desc: 'AI-powered design generation from text prompts. Style parameters, reference gallery, and design iteration.' },
+            { title: 'Designer Workspace', desc: 'Dedicated view for designers to manage iterations, upload concepts, and collaborate on active orders.' },
+            { title: 'Hardware Monitoring', desc: 'Real-time health of RFID readers, MQTT connections, WebSocket status, Redis cache, and ECS containers.' },
+            { title: 'Security & Audit Logs', desc: 'Full audit trail of user actions, login history, and security events. Role-based access control with MFA.' },
           ].map(({ title, desc }, i) => (
             <FadeIn key={title} delay={i * 0.03}>
               <div className="rounded-xl border border-border bg-bg-card p-5 h-full transition-all duration-200 hover:border-accent/20">
