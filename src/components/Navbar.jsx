@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const navLinks = [
   { label: 'Project', href: '#project' },
@@ -50,6 +51,9 @@ export default function Navbar() {
 
         <div className="flex items-center gap-8">
           <ul className="hidden gap-7 lg:flex">
+            <li>
+              <Link to="/about" className="text-[13px] text-text-muted transition-colors duration-200 hover:text-text-primary">About Me</Link>
+            </li>
             {navLinks.map(({ label, href }) => (
               <li key={href}>
                 <a href={href} className="text-[13px] text-text-muted transition-colors duration-200 hover:text-text-primary">{label}</a>
@@ -70,6 +74,9 @@ export default function Navbar() {
       {open && (
         <div className="border-t border-border/50 px-6 pb-4 lg:hidden">
           <ul className="flex flex-col gap-4 pt-4">
+            <li>
+              <Link to="/about" onClick={() => setOpen(false)} className="text-sm text-text-muted">About Me</Link>
+            </li>
             {navLinks.map(({ label, href }) => (
               <li key={href}>
                 <a href={href} onClick={() => setOpen(false)} className="text-sm text-text-muted">{label}</a>
