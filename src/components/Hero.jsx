@@ -33,7 +33,7 @@ export default function Hero() {
 
           <motion.p {...fade(0.3)} className="mt-6 max-w-lg text-base leading-relaxed text-text-secondary">
             I built the real-time RFID tracking system that runs production
-            at Jason of Beverly Hills — a luxury jewelry manufacturer where
+            at Jason of Beverly Hills, a luxury jewelry manufacturer where
             a single lost piece can cost tens of thousands of dollars. From
             Zebra RFID readers on the factory floor to live React dashboards
             in the cloud, I own the full stack.

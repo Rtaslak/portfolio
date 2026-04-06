@@ -10,19 +10,19 @@ const fade = (delay) => ({
 
 const experience = [
   {
-    period: 'Nov 2021 — Present',
+    period: 'Nov 2021 – Present',
     title: 'Full Stack Engineer / RFID & IoT Systems',
     company: 'Jason of Beverly Hills',
     location: 'Los Angeles, CA',
     bullets: [
-      'Built a full-stack RFID tracking platform — Zebra FX9600 readers processing thousands of tag events daily.',
+      'Built a full-stack RFID tracking platform. Zebra FX9600 readers processing thousands of tag events daily.',
       'Node.js + PostgreSQL + Redis backend with MQTT event streaming through AWS IoT Core.',
-      'React/TypeScript dashboard with 50+ components — real-time monitoring, analytics, multi-role access.',
+      'React/TypeScript dashboard with 50+ components. Real-time monitoring, analytics, multi-role access.',
       'AWS infrastructure: ECS, RDS, ElastiCache, S3, IoT Core, Docker, CI/CD.',
     ],
   },
   {
-    period: 'May 2019 — Aug 2020',
+    period: 'May 2019 – Aug 2020',
     title: 'Software Developer',
     company: 'Darksight, ME Infosec',
     location: 'Beirut, Lebanon',
@@ -74,7 +74,7 @@ export default function About() {
               <p className="mt-2 text-lg text-accent">Full-Stack Engineer · RFID & IoT Systems</p>
               <p className="mt-4 leading-relaxed text-text-secondary">
                 I build real-time systems that connect hardware to software.
-                I own projects end to end — from RFID readers and MQTT pipelines
+                I own projects end to end, from RFID readers and MQTT pipelines
                 to React dashboards and AWS infrastructure. Based in Los Angeles.
               </p>
             </div>

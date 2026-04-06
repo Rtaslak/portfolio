@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import FadeIn from './FadeIn'
 
 const screenshots = [
-  { src: '/screenshots/dashboard.png', title: 'Multi-Location Dashboard', desc: 'Live overview across 4 facilities — Downtown, Beverly Wilshire, HQ, and Las Vegas. Department counts, active orders, and total items at a glance.' },
-  { src: '/screenshots/orders.png', title: 'Order Management', desc: '415+ orders tracked end to end. Status, store location, product type, priority, pricing, and due dates — all filterable and searchable.' },
+  { src: '/screenshots/dashboard.png', title: 'Multi-Location Dashboard', desc: 'Live overview across 4 facilities: Downtown, Beverly Wilshire, HQ, and Las Vegas. Department counts, active orders, and total items at a glance.' },
+  { src: '/screenshots/orders.png', title: 'Order Management', desc: '415+ orders tracked end to end. Status, store location, product type, priority, pricing, and due dates. Filterable and searchable.' },
   { src: '/screenshots/rfid-mapping.png', title: 'RFID Reader Mapping', desc: 'Visual wiring of Zebra FX9600 antennas to physical departments. Color-coded connections show tag assignment zones, hold stations, and gate areas.' },
   { src: '/screenshots/orders-gallery.png', title: 'Product Gallery', desc: 'High-resolution images for every order. Managers and salespeople can view pieces with status badges and pricing without visiting the floor.' },
-  { src: '/screenshots/approval-queue.png', title: 'Approval Queue', desc: 'Submitted orders land here for manager review. Approve, reject, or request changes — with product images and submitter info.' },
+  { src: '/screenshots/approval-queue.png', title: 'Approval Queue', desc: 'Submitted orders land here for manager review. Approve, reject, or request changes with product images and submitter info.' },
   { src: '/screenshots/design-studio.png', title: 'AI Design Studio', desc: 'AI-powered jewelry design tool. Describe a piece, set style parameters, and generate design concepts with a reference gallery.' },
-  { src: '/screenshots/diagnostics.png', title: 'System Diagnostics', desc: 'Real-time health of every service — API, Redis cache, MQTT broker, WebSocket connections, and ECS container status.' },
+  { src: '/screenshots/diagnostics.png', title: 'System Diagnostics', desc: 'Real-time health of every service: API, Redis cache, MQTT broker, WebSocket connections, and ECS container status.' },
   { src: '/screenshots/login.png', title: 'Authentication', desc: 'Secure login with email/password or Google SSO. Role-based access determines what each user sees after sign-in.' },
 ]
 
@@ -102,15 +102,15 @@ export default function Project() {
           <h2 className="mt-4 text-center text-3xl font-bold tracking-tight sm:text-4xl text-text-primary">
             RFID-Powered Manufacturing Platform
           </h2>
-          <p className="mt-2 text-center text-accent">Jason of Beverly Hills — Luxury Jewelry Manufacturing</p>
+          <p className="mt-2 text-center text-accent">Jason of Beverly Hills · Luxury Jewelry Manufacturing</p>
         </FadeIn>
 
         <FadeIn>
           <p className="mx-auto mt-8 max-w-2xl text-center leading-relaxed text-text-secondary">
-            Jason of Beverly Hills crafts custom luxury jewelry — championship rings,
+            Jason of Beverly Hills crafts custom luxury jewelry. Championship rings,
             celebrity commissions, pieces worth tens of thousands of dollars. Every
             item passes through multiple production departments by hand. Losing track
-            of a single piece isn't just an error — it's a financial disaster.
+            of a single piece isn't just an error. It's a financial disaster.
           </p>
         </FadeIn>
 
@@ -144,15 +144,15 @@ export default function Project() {
           <FadeIn delay={0.2}>
             <div className="rounded-xl border border-border bg-bg-card p-7 h-full">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-text-muted">What I Built</p>
-              <p className="mt-4 text-[15px] font-medium text-text-primary">I built the entire operations platform — designed, developed, and deployed solo.</p>
+              <p className="mt-4 text-[15px] font-medium text-text-primary">I built the entire operations platform. Designed, developed, and deployed solo.</p>
               <ul className="mt-4 space-y-2.5">
                 <li className="flex items-start gap-3 text-sm text-text-secondary">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                  Automatic RFID tracking — every order's location updated in real time
+                  Automatic RFID tracking. Every order's location updated in real time
                 </li>
                 <li className="flex items-start gap-3 text-sm text-text-secondary">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
-                  6 role-based portals — each team gets exactly the tools they need
+                  6 role-based portals. Each team gets exactly the tools they need
                 </li>
                 <li className="flex items-start gap-3 text-sm text-text-secondary">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green/70" />
@@ -196,7 +196,7 @@ export default function Project() {
         <FadeIn>
           <div className="mt-16">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-text-muted text-center">
-              Not Just Tracking — A Full Operations Platform
+              Not Just Tracking. A Full Operations Platform.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-text-secondary">
               What started as an RFID tracking tool evolved into the system that runs
@@ -208,7 +208,7 @@ export default function Project() {
         <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { title: 'Live RFID Tracking', desc: 'Every tagged order tracked automatically as it moves between departments. No scanning, no manual input.' },
-            { title: 'Work Timers', desc: 'Tracks each jeweler\'s time per order at every station — who\'s fast, who\'s stuck, where bottlenecks form.' },
+            { title: 'Work Timers', desc: 'Tracks each jeweler\'s time per order at every station. See who\'s fast, who\'s stuck, and where bottlenecks form.' },
             { title: 'Estimated Finish Time', desc: 'Predicts completion based on historical stage durations and current workload. Late orders flagged automatically.' },
             { title: 'SMS & Email Alerts', desc: 'Automated notifications for order updates, delays, and status changes. Configurable per role with alert preferences.' },
             { title: 'Salesperson Portal', desc: 'Submit orders with images and specs, track status in real time. No floor visits, no phone calls.' },
