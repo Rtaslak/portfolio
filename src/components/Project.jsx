@@ -208,6 +208,7 @@ export default function Project() {
         <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { title: 'Live RFID Tracking', desc: 'Every tagged order tracked automatically as it moves between departments. No scanning, no manual input.' },
+            { title: 'Full Location History', desc: 'Complete timeline of every order\'s journey. Every department, station, and timestamp recorded. Full chain of custody for high-value pieces.' },
             { title: 'Work Timers', desc: 'Tracks each jeweler\'s time per order at every station. See who\'s fast, who\'s stuck, and where bottlenecks form.' },
             { title: 'Estimated Finish Time', desc: 'Predicts completion based on historical stage durations and current workload. Late orders flagged automatically.' },
             { title: 'SMS & Email Alerts', desc: 'Automated notifications for order updates, delays, and status changes. Configurable per role with alert preferences.' },
