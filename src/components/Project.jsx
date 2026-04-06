@@ -174,19 +174,19 @@ export default function Project() {
             <div className="mt-6 grid grid-cols-2 gap-8 sm:grid-cols-4">
               <div>
                 <span className="text-3xl font-bold text-text-primary sm:text-4xl">30%</span>
-                <p className="mt-1 text-sm text-text-secondary">labor efficiency increase</p>
+                <p className="mt-1 text-sm text-text-secondary">more orders completed per shift</p>
               </div>
               <div>
                 <span className="text-3xl font-bold text-text-primary sm:text-4xl">90%</span>
-                <p className="mt-1 text-sm text-text-secondary">fewer tracking errors</p>
+                <p className="mt-1 text-sm text-text-secondary">fewer lost or misplaced items</p>
               </div>
               <div>
-                <span className="text-3xl font-bold text-text-primary sm:text-4xl">1000s</span>
-                <p className="mt-1 text-sm text-text-secondary">RFID events processed daily</p>
+                <span className="text-3xl font-bold text-text-primary sm:text-4xl">&lt;1s</span>
+                <p className="mt-1 text-sm text-text-secondary">real-time location updates</p>
               </div>
               <div>
-                <span className="text-3xl font-bold text-text-primary sm:text-4xl">6</span>
-                <p className="mt-1 text-sm text-text-secondary">user roles with tailored views</p>
+                <span className="text-3xl font-bold text-text-primary sm:text-4xl">0</span>
+                <p className="mt-1 text-sm text-text-secondary">manual tracking required</p>
               </div>
             </div>
           </div>
