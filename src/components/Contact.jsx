@@ -32,7 +32,7 @@ export default function Contact() {
         <FadeIn delay={0.1}>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a href="mailto:rtaslakian@gmail.com" className="rounded-md bg-accent px-5 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25">
-              rtaslakian@gmail.com
+              Email
             </a>
             <a href="https://www.linkedin.com/in/raffi-taslakian/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-md border border-border px-5 py-3 text-sm text-text-muted transition-all duration-200 hover:border-text-muted hover:text-text-primary">
               <LinkedInIcon /> LinkedIn
