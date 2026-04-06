@@ -245,9 +245,14 @@ export default function Project() {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-text-muted text-center">How It Works</p>
             <p className="mt-4 mx-auto max-w-2xl text-center text-sm text-text-secondary">
               An RFID tag is attached to every order. As it moves between departments,
-              Zebra FX9600 readers detect it automatically. Events stream through MQTT
-              to the backend, which updates the database and pushes live changes to
-              every connected dashboard via WebSockets.
+              Zebra FX9600 readers detect it automatically. Each reader reports signal
+              strength (RSSI) per antenna, and the system uses that to determine exact
+              location, not just whether an item was seen, but which station it's
+              closest to. Events queue through SQS for reliable async processing,
+              stream via MQTT to the backend, update PostgreSQL, and push live
+              changes to every connected dashboard through WebSockets. Infrastructure
+              is managed with Terraform, auth runs on AWS Cognito with MFA, and Redis
+              cache invalidation stays synced across ECS containers.
             </p>
             <div className="mt-8 flex justify-center overflow-x-auto pb-4">
               <div className="flex items-center gap-2 sm:gap-3 min-w-max">
@@ -270,7 +275,7 @@ export default function Project() {
         {/* --- TECH --- */}
         <FadeIn>
           <div className="mt-12 flex flex-wrap justify-center gap-2">
-            {['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'Socket.IO', 'MQTT', 'AWS ECS', 'AWS IoT Core', 'Docker', 'Zebra FX9600'].map((t) => (
+            {['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Redis', 'Socket.IO', 'MQTT', 'AWS ECS', 'AWS IoT Core', 'SQS', 'Cognito', 'Terraform', 'Docker', 'Zebra FX9600', 'RSSI'].map((t) => (
               <span key={t} className="rounded-md border border-border bg-bg-card px-3 py-1 text-xs text-text-muted">{t}</span>
             ))}
           </div>
