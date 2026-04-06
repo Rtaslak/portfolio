@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const screenshots = [
@@ -14,7 +14,10 @@ const screenshots = [
 
 export default function Gallery() {
   const [active, setActive] = useState(0)
+  const [imgError, setImgError] = useState(false)
   const current = screenshots[active]
+
+  useEffect(() => setImgError(false), [active])
 
   return (
     <div className="mt-14">
@@ -29,18 +32,18 @@ export default function Gallery() {
             transition={{ duration: 0.2 }}
             className="aspect-[16/9] flex items-center justify-center"
           >
-            <img
-              src={current.src}
-              alt={current.title}
-              className="h-full w-full object-cover object-top"
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.nextSibling.style.display = 'flex'
-              }}
-            />
-            <div className="hidden items-center justify-center h-full w-full text-text-muted text-sm">
-              {current.title}
-            </div>
+            {!imgError ? (
+              <img
+                src={current.src}
+                alt={current.title}
+                className="h-full w-full object-cover object-top"
+                onError={() => setImgError(true)}
+              />
+            ) : (
+              <div className="flex items-center justify-center h-full w-full text-text-muted text-sm">
+                {current.title}
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
 
@@ -59,14 +62,14 @@ export default function Gallery() {
         <button
           onClick={() => setActive(active > 0 ? active - 1 : screenshots.length - 1)}
           className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-bg/70 text-text-muted backdrop-blur-sm transition-colors hover:text-text-primary"
-          aria-label="Previous"
+          aria-label="Previous screenshot"
         >
           ‹
         </button>
         <button
           onClick={() => setActive(active < screenshots.length - 1 ? active + 1 : 0)}
           className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-bg/70 text-text-muted backdrop-blur-sm transition-colors hover:text-text-primary"
-          aria-label="Next"
+          aria-label="Next screenshot"
         >
           ›
         </button>
@@ -75,32 +78,32 @@ export default function Gallery() {
       {/* Thumbnails */}
       <div className="mt-4 flex gap-2 overflow-x-auto pb-2">
         {screenshots.map(({ src, title }, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            className={`shrink-0 overflow-hidden rounded-lg border transition-all duration-200 ${
-              i === active
-                ? 'border-accent ring-1 ring-accent/30'
-                : 'border-border opacity-50 hover:opacity-80'
-            }`}
-          >
-            <div className="h-16 w-28 sm:h-20 sm:w-36 bg-bg-elevated flex items-center justify-center">
-              <img
-                src={src}
-                alt={title}
-                className="h-full w-full object-cover object-top"
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                  e.target.nextSibling.style.display = 'flex'
-                }}
-              />
-              <div className="hidden items-center justify-center h-full w-full text-[10px] text-text-muted">
-                {i + 1}
-              </div>
-            </div>
-          </button>
+          <Thumbnail key={src} src={src} title={title} index={i} active={active} onSelect={setActive} />
         ))}
       </div>
     </div>
+  )
+}
+
+function Thumbnail({ src, title, index, active, onSelect }) {
+  const [error, setError] = useState(false)
+
+  return (
+    <button
+      onClick={() => onSelect(index)}
+      className={`shrink-0 overflow-hidden rounded-lg border transition-all duration-200 ${
+        index === active
+          ? 'border-accent ring-1 ring-accent/30'
+          : 'border-border opacity-50 hover:opacity-80'
+      }`}
+    >
+      <div className="h-16 w-28 sm:h-20 sm:w-36 bg-bg-elevated flex items-center justify-center">
+        {!error ? (
+          <img src={src} alt={title} className="h-full w-full object-cover object-top" onError={() => setError(true)} />
+        ) : (
+          <span className="text-[10px] text-text-muted">{index + 1}</span>
+        )}
+      </div>
+    </button>
   )
 }
