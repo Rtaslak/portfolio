@@ -1,7 +1,8 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Project from './components/Project'
+import ProjectCase from './components/ProjectCase'
 import Contact from './components/Contact'
+import { projects } from './data/projects'
 
 function Divider() {
   return <div className="section-divider mx-auto max-w-5xl" />
@@ -13,8 +14,12 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Divider />
-        <Project />
+        {projects.map((project) => (
+          <div key={project.id}>
+            <Divider />
+            <ProjectCase project={project} />
+          </div>
+        ))}
         <Divider />
         <Contact />
       </main>
