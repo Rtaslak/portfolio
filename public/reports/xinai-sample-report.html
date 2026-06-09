@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security Assessment Report — www.jasonofbh.net</title>
+<style>
+  :root {
+    --bg: #09090b;
+    --card: #111113;
+    --elevated: #18181b;
+    --border: #27272a;
+    --text: #fafafa;
+    --muted: #a1a1aa;
+    --faint: #71717a;
+    --accent: #3b82f6;
+    --cyan: #22d3ee;
+    --green: #34d399;
+    --critical: #ef4444;
+    --high: #f97316;
+    --medium: #eab308;
+    --low: #3b82f6;
+    --info: #a1a1aa;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+  .page { max-width: 920px; margin: 0 auto; padding: 0 24px 80px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    min-height: 100vh;
+    margin: 0 -24px;
+    padding: 88px 56px 64px;
+    background:
+      radial-gradient(1100px 500px at 12% -8%, rgba(59,130,246,0.16), transparent 60%),
+      radial-gradient(900px 480px at 92% 6%, rgba(34,211,238,0.10), transparent 55%),
+      linear-gradient(180deg, #0b0b0e 0%, #09090b 100%);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+  }
+  .classification {
+    color: var(--high);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .cover .brand {
+    margin-top: 14px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+  .cover h1 {
+    font-size: 44px;
+    line-height: 1.1;
+    margin: 26px 0 10px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(95deg, #fafafa 0%, #c4c4cc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .cover .target {
+    font-size: 19px;
+    color: var(--cyan);
+    margin-bottom: 8px;
+  }
+  .cover .lede {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 44px;
+  }
+  .cover-meta {
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    padding-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 40px;
+    font-size: 14px;
+    max-width: 760px;
+  }
+  .cover-meta .row { display: flex; flex-direction: column; gap: 2px; }
+  .cover-meta .k {
+    color: var(--faint);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .cover-meta .v { color: var(--text); }
+  .cover .disclaimer {
+    margin-top: 30px;
+    font-size: 12px;
+    color: var(--faint);
+    font-style: italic;
+    max-width: 660px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section { margin-top: 52px; }
+  h2 {
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  h2 .num {
+    color: var(--accent);
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 24px 0 8px;
+    color: var(--text);
+  }
+  p { margin: 12px 0; color: var(--muted); }
+  p.lead { color: #d4d4d8; }
+  ul { margin: 10px 0; padding-left: 20px; }
+  li { margin: 6px 0; color: var(--muted); }
+  strong { color: var(--text); font-weight: 600; }
+  em { color: var(--faint); }
+  code {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 6px;
+    color: #e4e4e7;
+  }
+  pre {
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #e4e4e7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 8px 0;
+  }
+
+  /* ---------- TABLES ---------- */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 9px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--elevated);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td { color: var(--muted); }
+
+  /* ---------- CARDS / GRID ---------- */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 14px 0;
+  }
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+  .meta-line { color: var(--faint); font-size: 13px; margin: 6px 0; }
+  .meta-line .label { color: var(--muted); font-weight: 600; }
+
+  /* ---------- SEVERITY ---------- */
+  .sev {
+    display: inline-block;
+    padding: 2px 11px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid transparent;
+    vertical-align: middle;
+  }
+  .sev-critical { color: var(--critical); background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.4); }
+  .sev-high     { color: var(--high);     background: rgba(249,115,22,0.12); border-color: rgba(249,115,22,0.4); }
+  .sev-medium   { color: var(--medium);   background: rgba(234,179,8,0.12);  border-color: rgba(234,179,8,0.4); }
+  .sev-low      { color: var(--low);      background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.4); }
+  .sev-info     { color: var(--info);     background: rgba(161,161,170,0.12);border-color: rgba(161,161,170,0.4); }
+
+  .status-remediated {
+    display: inline-block;
+    color: var(--green);
+    background: rgba(52,211,153,0.10);
+    border: 1px solid rgba(52,211,153,0.35);
+    border-radius: 999px;
+    padding: 2px 11px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ---------- SUMMARY COUNTS ---------- */
+  .sev-counts {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0,1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .sev-counts .cell {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 8px;
+    text-align: center;
+  }
+  .sev-counts .n { font-size: 28px; font-weight: 800; line-height: 1; }
+  .sev-counts .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin-top: 6px; }
+
+  /* ---------- CHART ---------- */
+  .chart {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  .chart svg { display: block; width: 100%; height: auto; max-width: 520px; }
+
+  /* ---------- FINDINGS ---------- */
+  .finding {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left-width: 4px;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 16px 0;
+  }
+  .finding.f-medium { border-left-color: var(--medium); }
+  .finding.f-low    { border-left-color: var(--low); }
+  .finding.f-info   { border-left-color: var(--info); }
+  .finding-head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .finding-head .fid {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 13px;
+    color: var(--cyan);
+  }
+  .finding-head .ftitle { font-size: 17px; font-weight: 700; color: var(--text); }
+  .finding .cvss {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    color: var(--faint);
+    margin: 8px 0 14px;
+  }
+  .finding .cvss .score { color: var(--text); font-weight: 700; }
+  .finding p .label, .finding .label { color: var(--text); font-weight: 600; }
+  .finding p { margin: 10px 0; }
+
+  /* ---------- METHODOLOGY ---------- */
+  .phase {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase:last-child { border-bottom: 0; }
+  .phase .badge {
+    flex: 0 0 auto;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .phase .pname { font-weight: 600; color: var(--text); }
+  .phase .pdetail { color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+  /* ---------- TECH PILLS ---------- */
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .pill {
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12px;
+    background: var(--elevated);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 9px;
+    color: var(--muted);
+  }
+
+  /* ---------- CALLOUT ---------- */
+  .callout {
+    background: rgba(52,211,153,0.04);
+    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    color: #d4d4d8;
+    font-size: 14px;
+  }
+  .callout .label { color: var(--green); font-weight: 700; }
+
+  .footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--faint);
+    font-size: 12px;
+  }
+  .footer .dot { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .cover { padding: 64px 28px 48px; }
+    .cover h1 { font-size: 34px; }
+    .cover-meta, .grid2, .sev-counts { grid-template-columns: 1fr; }
+    .sev-counts { grid-template-columns: repeat(5, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- =================== 1. COVER PAGE =================== -->
+  <section class="cover" style="margin-top:0;">
+    <div class="classification">Confidential — Author's Own Property</div>
+    <div class="brand">Xinai — Autonomous AI Pentest Agent</div>
+    <h1>Security Assessment Report</h1>
+    <div class="target mono">www.jasonofbh.net</div>
+    <p class="lede">Web application security assessment of a self-owned production WordPress property, conducted autonomously by Xinai under explicit owner authorization.</p>
+
+    <div class="cover-meta">
+      <div class="row"><span class="k">Target</span><span class="v mono">www.jasonofbh.net</span></div>
+      <div class="row"><span class="k">Conducted by</span><span class="v">Xinai — Autonomous AI Pentest Agent</span></div>
+      <div class="row"><span class="k">Assessor / Owner</span><span class="v">Raffi Taslakian</span></div>
+      <div class="row"><span class="k">Engagement type</span><span class="v">Web Application — Black Box (Authorized, Self-Owned Property)</span></div>
+      <div class="row"><span class="k">Engagement window</span><span class="v">2026-05-30 – 2026-06-01</span></div>
+      <div class="row"><span class="k">Report issued</span><span class="v">2026-06-02</span></div>
+      <div class="row"><span class="k">Version</span><span class="v">1.0</span></div>
+      <div class="row"><span class="k">Document ID</span><span class="v mono">XINAI-RPT-2026-0042</span></div>
+    </div>
+
+    <div class="disclaimer">This report reflects a point-in-time security assessment of the author's own property. Findings represent the environment as tested during the engagement window; all issues described were remediated prior to publication and may not reflect the property's current state.</div>
+  </section>
+
+  <!-- =================== 2. DOCUMENT CONTROL =================== -->
+  <section id="document-control">
+    <h2><span class="num">01</span>Document Control</h2>
+    <table>
+      <tr><th>Version</th><th>Date</th><th>Author</th><th>Status</th><th>Change</th></tr>
+      <tr>
+        <td class="mono">1.0</td>
+        <td class="mono">2026-06-02</td>
+        <td>Raffi Taslakian</td>
+        <td><span class="status-remediated">Found &amp; remediated</span></td>
+        <td>Initial assessment issued; all findings remediated prior to publication.</td>
+      </tr>
+    </table>
+
+    <h3>Classification &amp; Handling</h3>
+    <p><strong>Confidential — Author's Own Property.</strong> This document describes an authorized security assessment of a production property owned and operated by the assessor. It is published as a portfolio artifact; no third-party or client data is contained herein.</p>
+    <p><em>All testing was conducted under the owner's own authorization, within a self-defined scope and rules of engagement, following a non-destructive, do-no-harm methodology.</em></p>
+  </section>
+
+  <!-- =================== 3. SCOPE & RULES OF ENGAGEMENT =================== -->
+  <section id="scope">
+    <h2><span class="num">02</span>Scope &amp; Rules of Engagement</h2>
+    <div class="meta-line"><span class="label">Assessment type:</span> Web Application — Black Box</div>
+    <div class="meta-line"><span class="label">Perspective:</span> Unauthenticated, external (Internet-facing)</div>
+    <div class="meta-line"><span class="label">Engagement posture:</span> Stealth — passive-first, throttled, low-noise</div>
+    <div class="meta-line"><span class="label">Test window:</span> 2026-05-30 – 2026-06-01</div>
+
+    <h3>In Scope</h3>
+    <ul>
+      <li class="mono">www.jasonofbh.net</li>
+      <li class="mono">dev.jasonofbh.net</li>
+    </ul>
+
+    <h3>Out of Scope / Exclusions</h3>
+    <ul>
+      <li>Any host, subdomain, or service not explicitly listed above</li>
+      <li>Destructive testing, denial-of-service, and data exfiltration beyond minimal proof</li>
+      <li>Third-party services (CDN, payment processors, analytics)</li>
+    </ul>
+
+    <h3>Rules of Engagement</h3>
+    <ul>
+      <li>Passive reconnaissance first; active probing kept throttled and low-noise.</li>
+      <li>Non-destructive only — proof captured to the minimum extent needed, never the full dataset.</li>
+      <li>Every target matched against the in-scope allowlist <em>before</em> any tool subprocess is spawned; out-of-scope targets are hard-blocked.</li>
+    </ul>
+
+    <p><em>The target is the assessor's own production property. The engagement was self-authorized, and every finding documented below was remediated prior to publication of this report.</em></p>
+  </section>
+
+  <!-- =================== 4. EXECUTIVE SUMMARY =================== -->
+  <section id="executive-summary">
+    <h2><span class="num">03</span>Executive Summary</h2>
+    <p class="lead">Xinai performed an authorized, autonomous black-box assessment of <code>www.jasonofbh.net</code> — a production WordPress property owned and operated by the assessor. Working from passive reconnaissance through controlled discovery, the agent surfaced <strong>five information-disclosure and hardening issues</strong>. None were exploitable for code execution or data compromise; the findings are characteristic of a recon/discovery-stage assessment — exposed metadata, permissive defaults, and version disclosure that lower the cost of a future targeted attack. <strong>All five findings have since been remediated.</strong> No critical or high-severity vulnerabilities were identified, and no confirmed remote code execution was found.</p>
+    <div class="sev-counts">
+      <div class="cell"><div class="n" style="color:var(--critical)">0</div><div class="lbl">Critical</div></div>
+      <div class="cell"><div class="n" style="color:var(--high)">0</div><div class="lbl">High</div></div>
+      <div class="cell"><div class="n" style="color:var(--medium)">2</div><div class="lbl">Medium</div></div>
+      <div class="cell"><div class="n" style="color:var(--low)">2</div><div class="lbl">Low</div></div>
+      <div class="cell"><div class="n" style="color:var(--info)">1</div><div class="lbl">Info</div></div>
+    </div>
+    <p class="meta-line"><strong>Severity distribution:</strong> Critical ×0 · High ×0 · Medium ×2 · Low ×2 · Info ×1 — total 5 findings, all remediated.</p>
+  </section>
+
+  <!-- =================== 5. SEVERITY DISTRIBUTION CHART =================== -->
+  <section id="severity-distribution">
+    <h2><span class="num">04</span>Severity Distribution</h2>
+    <div class="chart">
+      <svg viewBox="0 0 480 196" role="img" aria-label="Findings by severity: Critical 0, High 0, Medium 2, Low 2, Info 1" xmlns="http://www.w3.org/2000/svg">
+        <!-- Critical: 0 -->
+        <text x="68" y="23" text-anchor="end" font-family="sans-serif" font-size="13" fill="#a1a1aa">Critical</text>
+        <rect x="76" y="11" width="2" height="20" rx="3" fill="#ef4444"/>
+        <text x="86" y="26" font-family="sans-serif" font-size="13" font-weight="700" fill="#fafafa">0</text>
+        <!-- High: 0 -->
+        <text x="68" y="59" text-anchor="end" font-family="sans-serif" font-size="13" fill="#a1a1aa">High</text>
+        <rect x="76" y="47" width="2" height="20" rx="3" fill="#f97316"/>
+        <text x="86" y="62" font-family="sans-serif" font-size="13" font-weight="700" fill="#fafafa">0</text>
+        <!-- Medium: 2 (max) -->
+        <text x="68" y="95" text-anchor="end" font-family="sans-serif" font-size="13" fill="#a1a1aa">Medium</text>
+        <rect x="76" y="83" width="340" height="20" rx="3" fill="#eab308"/>
+        <text x="424" y="98" font-family="sans-serif" font-size="13" font-weight="700" fill="#fafafa">2</text>
+        <!-- Low: 2 -->
+        <text x="68" y="131" text-anchor="end" font-family="sans-serif" font-size="13" fill="#a1a1aa">Low</text>
+        <rect x="76" y="119" width="340" height="20" rx="3" fill="#3b82f6"/>
+        <text x="424" y="134" font-family="sans-serif" font-size="13" font-weight="700" fill="#fafafa">2</text>
+        <!-- Info: 1 -->
+        <text x="68" y="167" text-anchor="end" font-family="sans-serif" font-size="13" fill="#a1a1aa">Info</text>
+        <rect x="76" y="155" width="170" height="20" rx="3" fill="#a1a1aa"/>
+        <text x="254" y="170" font-family="sans-serif" font-size="13" font-weight="700" fill="#fafafa">1</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- =================== 6. METHODOLOGY =================== -->
+  <section id="methodology">
+    <h2><span class="num">05</span>Methodology</h2>
+    <p>Xinai follows a disciplined, passive-first five-phase methodology aligned with PTES, the OWASP Web Security Testing Guide, and NIST SP 800-115. This engagement was scoped to reconnaissance and discovery; it did not proceed to active exploitation.</p>
+    <div class="card" style="padding:8px 24px;">
+      <div class="phase">
+        <div class="badge">1</div>
+        <div><div class="pname">Reconnaissance</div><div class="pdetail">Passive intelligence gathering — certificate-transparency logs, DNS, and a single quiet fingerprint to map the attack surface before any active probing.</div></div>
+      </div>
+      <div class="phase">
+        <div class="badge">2</div>
+        <div><div class="pname">Discovery</div><div class="pdetail">Controlled, throttled enumeration of live hosts, endpoints, and technologies — scaled to what the target tolerates.</div></div>
+      </div>
+      <div class="phase">
+        <div class="badge">3</div>
+        <div><div class="pname">Vulnerability Testing</div><div class="pdetail">Manual analysis backed by targeted checks; every candidate is validated, never asserted from an automated scanner alone.</div></div>
+      </div>
+      <div class="phase">
+        <div class="badge">4</div>
+        <div><div class="pname">Exploitation</div><div class="pdetail">Confirmed findings are non-destructively exploited to prove real impact, with proof-of-exploit captured. <em>Not reached this engagement — no finding warranted exploitation.</em></div></div>
+      </div>
+      <div class="phase">
+        <div class="badge">5</div>
+        <div><div class="pname">Report</div><div class="pdetail">Findings are risk-rated with CVSS v3.1, mapped to CWE / OWASP / MITRE ATT&amp;CK, and paired with concrete remediation guidance.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== 7. FINDINGS =================== -->
+  <section id="findings">
+    <h2><span class="num">06</span>Findings</h2>
+
+    <table>
+      <tr><th>#</th><th>Severity</th><th>Title</th><th>CVSS</th><th>Status</th></tr>
+      <tr><td class="mono">XINAI-001</td><td><span class="sev sev-medium">Medium</span></td><td>WordPress REST API User Enumeration</td><td class="mono">5.3</td><td><span class="status-remediated">Remediated</span></td></tr>
+      <tr><td class="mono">XINAI-002</td><td><span class="sev sev-medium">Medium</span></td><td>Permissive CORS Configuration</td><td class="mono">5.4</td><td><span class="status-remediated">Remediated</span></td></tr>
+      <tr><td class="mono">XINAI-003</td><td><span class="sev sev-low">Low</span></td><td>Exposed Development Subdomain</td><td class="mono">5.3</td><td><span class="status-remediated">Remediated</span></td></tr>
+      <tr><td class="mono">XINAI-004</td><td><span class="sev sev-low">Low</span></td><td>XML-RPC Interface Enabled</td><td class="mono">5.3</td><td><span class="status-remediated">Remediated</span></td></tr>
+      <tr><td class="mono">XINAI-005</td><td><span class="sev sev-info">Info</span></td><td>Web Technology &amp; Version Disclosure</td><td class="mono">0.0</td><td><span class="status-remediated">Remediated</span></td></tr>
+    </table>
+
+    <!-- XINAI-001 -->
+    <div class="finding f-medium">
+      <div class="finding-head">
+        <span class="fid mono">XINAI-001</span>
+        <span class="ftitle">WordPress REST API User Enumeration</span>
+        <span class="sev sev-medium">Medium</span>
+        <span class="status-remediated">Remediated</span>
+      </div>
+      <div class="cvss">CVSS v3.1 <span class="score">5.3</span> · AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N · CWE-200 · OWASP A01:2021</div>
+      <p><span class="label">Description:</span> The WordPress REST API endpoint <code>/wp-json/wp/v2/users</code> was reachable without authentication and returned the site's author accounts, including their display names and login slugs.</p>
+      <p class="label">Reproduction:</p>
+      <pre>GET https://www.jasonofbh.net/wp-json/wp/v2/users</pre>
+      <p><span class="label">Impact:</span> Disclosure of valid usernames removes the guesswork from credential-stuffing and brute-force attacks against <code>wp-login.php</code>, lowering the cost of a future account-takeover attempt.</p>
+      <p><span class="label">Remediation:</span> Restrict the REST <code>users</code> endpoint to authenticated requests (filter <code>rest_endpoints</code> or apply a security plugin), and disable public author archives that leak the same slugs.</p>
+    </div>
+
+    <!-- XINAI-002 -->
+    <div class="finding f-medium">
+      <div class="finding-head">
+        <span class="fid mono">XINAI-002</span>
+        <span class="ftitle">Permissive CORS Configuration</span>
+        <span class="sev sev-medium">Medium</span>
+        <span class="status-remediated">Remediated</span>
+      </div>
+      <div class="cvss">CVSS v3.1 <span class="score">5.4</span> · AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N · CWE-942 · OWASP A05:2021</div>
+      <p><span class="label">Description:</span> The application's API reflected an arbitrary <code>Origin</code> request header back in <code>Access-Control-Allow-Origin</code> while also returning <code>Access-Control-Allow-Credentials: true</code>.</p>
+      <p class="label">Reproduction:</p>
+      <pre>GET /wp-json/ HTTP/1.1
+Host: www.jasonofbh.net
+Origin: https://evil.example
+
+# Response reflects the attacker origin:
+Access-Control-Allow-Origin: https://evil.example
+Access-Control-Allow-Credentials: true</pre>
+      <p><span class="label">Impact:</span> A malicious origin can issue credentialed cross-origin requests and read authenticated responses, exposing data scoped to a logged-in user's session.</p>
+      <p><span class="label">Remediation:</span> Enforce a server-side allowlist of trusted origins; never reflect an arbitrary <code>Origin</code> while credentials are allowed. Drop <code>Access-Control-Allow-Credentials</code> wherever it is not strictly required.</p>
+    </div>
+
+    <!-- XINAI-003 -->
+    <div class="finding f-low">
+      <div class="finding-head">
+        <span class="fid mono">XINAI-003</span>
+        <span class="ftitle">Exposed Development Subdomain</span>
+        <span class="sev sev-low">Low</span>
+        <span class="status-remediated">Remediated</span>
+      </div>
+      <div class="cvss">CVSS v3.1 <span class="score">5.3</span> · AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N · CWE-200 · OWASP A05:2021</div>
+      <p><span class="label">Description:</span> The host <code>dev.jasonofbh.net</code> was publicly reachable and indexable. Xinai discovered it passively through certificate-transparency logs rather than active brute-forcing.</p>
+      <p class="label">Reproduction:</p>
+      <pre># Discover via certificate transparency
+curl -s 'https://crt.sh/?q=%25.jasonofbh.net&output=json'
+# dev.jasonofbh.net appears in issued certificates; browse to it
+curl -I https://dev.jasonofbh.net/</pre>
+      <p><span class="label">Impact:</span> Pre-production environments frequently run unhardened code, verbose error pages, or stale configuration, exposing functionality and information not intended for the public.</p>
+      <p><span class="label">Remediation:</span> Place the development environment behind IP allowlisting or HTTP authentication, add <code>noindex</code>, and exclude it from public DNS and certificate transparency where feasible.</p>
+    </div>
+
+    <!-- XINAI-004 -->
+    <div class="finding f-low">
+      <div class="finding-head">
+        <span class="fid mono">XINAI-004</span>
+        <span class="ftitle">XML-RPC Interface Enabled</span>
+        <span class="sev sev-low">Low</span>
+        <span class="status-remediated">Remediated</span>
+      </div>
+      <div class="cvss">CVSS v3.1 <span class="score">5.3</span> · AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L · CWE-799 · OWASP A05:2021</div>
+      <p><span class="label">Description:</span> The legacy <code>xmlrpc.php</code> interface was enabled and exposed <code>system.multicall</code>, which lets a client batch many calls into a single request.</p>
+      <p class="label">Reproduction:</p>
+      <pre>POST /xmlrpc.php HTTP/1.1
+Host: www.jasonofbh.net
+Content-Type: text/xml
+
+&lt;methodCall&gt;&lt;methodName&gt;system.listMethods&lt;/methodName&gt;&lt;/methodCall&gt;
+# Response lists system.multicall, wp.getUsersBlogs, pingback.ping ...</pre>
+      <p><span class="label">Impact:</span> <code>system.multicall</code> amplifies brute-force attempts (hundreds of password guesses per request) and the <code>pingback</code> methods can be abused as a denial-of-service / SSRF reflection vector.</p>
+      <p><span class="label">Remediation:</span> Disable XML-RPC entirely if it is unused, or filter the available methods and apply rate limiting at the edge (WAF / reverse proxy).</p>
+    </div>
+
+    <!-- XINAI-005 -->
+    <div class="finding f-info">
+      <div class="finding-head">
+        <span class="fid mono">XINAI-005</span>
+        <span class="ftitle">Web Technology &amp; Version Disclosure</span>
+        <span class="sev sev-info">Info</span>
+        <span class="status-remediated">Remediated</span>
+      </div>
+      <div class="cvss">CVSS v3.1 <span class="score">0.0</span> (informational) · AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N · CWE-200 · OWASP A06:2021</div>
+      <p><span class="label">Description:</span> Response headers and the <code>/readme.html</code> file disclosed the exact WordPress core version along with several plugin versions.</p>
+      <p class="label">Reproduction:</p>
+      <pre>curl -sI https://www.jasonofbh.net/ | grep -iE 'server|x-powered-by'
+curl -s  https://www.jasonofbh.net/readme.html | grep -i version</pre>
+      <p><span class="label">Impact:</span> Precise version fingerprints let an attacker skip discovery and select known exploits matched to the running software, raising the efficiency of a targeted attack. Informational on its own.</p>
+      <p><span class="label">Remediation:</span> Suppress the <code>Server</code> and <code>X-Powered-By</code> version strings, remove <code>readme.html</code>, strip the WordPress generator meta tag, and serve generic error pages.</p>
+    </div>
+  </section>
+
+  <!-- =================== 8. RECOMMENDATIONS =================== -->
+  <section id="recommendations">
+    <h2><span class="num">07</span>Recommendations</h2>
+    <p>Prioritized hardening actions, ordered by risk reduction. All listed items were applied to <code>www.jasonofbh.net</code> as part of remediation.</p>
+    <h3>Priority 1 — Reduce the unauthenticated attack surface</h3>
+    <ul>
+      <li><strong>Lock down the REST API and XML-RPC:</strong> require authentication on the REST <code>users</code> endpoint and disable <code>xmlrpc.php</code> (or filter its methods and rate-limit it).</li>
+      <li><strong>Fix the CORS policy:</strong> replace origin reflection with a strict server-side allowlist and never combine credentialed responses with arbitrary origins.</li>
+    </ul>
+    <h3>Priority 2 — Gate non-production and reduce disclosure</h3>
+    <ul>
+      <li><strong>Gate the dev subdomain:</strong> put <code>dev.jasonofbh.net</code> behind IP allowlisting or HTTP auth and mark it <code>noindex</code>.</li>
+      <li><strong>Suppress version disclosure:</strong> remove version headers, the generator meta tag, and <code>readme.html</code>; serve generic error pages.</li>
+    </ul>
+    <h3>Priority 3 — Defense in depth</h3>
+    <ul>
+      <li><strong>Add WAF rules and rate limiting:</strong> deploy edge WAF rules for WordPress (login throttling, XML-RPC and REST abuse signatures) and apply per-IP rate limiting to authentication endpoints.</li>
+    </ul>
+  </section>
+
+  <!-- =================== 9. APPENDIX =================== -->
+  <section id="appendix">
+    <h2><span class="num">08</span>Appendix</h2>
+
+    <h3>Appendix A — CVSS Severity Bands</h3>
+    <table>
+      <tr><th>Severity</th><th>CVSS v3.1 score</th></tr>
+      <tr><td><span class="sev sev-critical">Critical</span></td><td class="mono">9.0 – 10.0</td></tr>
+      <tr><td><span class="sev sev-high">High</span></td><td class="mono">7.0 – 8.9</td></tr>
+      <tr><td><span class="sev sev-medium">Medium</span></td><td class="mono">4.0 – 6.9</td></tr>
+      <tr><td><span class="sev sev-low">Low</span></td><td class="mono">0.1 – 3.9</td></tr>
+      <tr><td><span class="sev sev-info">Informational</span></td><td class="mono">0.0</td></tr>
+    </table>
+
+    <h3>Appendix B — Glossary</h3>
+    <ul>
+      <li><strong>CVSS</strong> — Common Vulnerability Scoring System; a standardized severity score (0–10) derived from a base metric vector.</li>
+      <li><strong>CORS</strong> — Cross-Origin Resource Sharing; the browser policy governing which origins may read a cross-origin response.</li>
+      <li><strong>REST API</strong> — WordPress's HTTP interface at <code>/wp-json/</code> for programmatic access to site data.</li>
+      <li><strong>XML-RPC</strong> — A legacy WordPress remote-procedure-call interface (<code>xmlrpc.php</code>).</li>
+      <li><strong>Certificate Transparency</strong> — Public, append-only logs of issued TLS certificates, useful for passive subdomain discovery.</li>
+    </ul>
+
+    <h3>Appendix C — Tooling</h3>
+    <div class="pills">
+      <span class="pill">Claude Opus 4.8</span>
+      <span class="pill">Claude Agent SDK</span>
+      <span class="pill">MCP tool registry</span>
+      <span class="pill">crt.sh / CT logs</span>
+      <span class="pill">subfinder</span>
+      <span class="pill">httpx</span>
+      <span class="pill">whatweb</span>
+      <span class="pill">curl</span>
+      <span class="pill">nmap</span>
+    </div>
+
+    <h3>Appendix D — Note</h3>
+    <div class="callout">
+      <span class="label">Generated by Xinai.</span> This report documents an authorized assessment of the author's own production property; all findings were remediated prior to publication. No third-party systems were tested, and no confirmed critical or remote-code-execution vulnerabilities were identified — the findings reflect a recon/discovery-stage assessment surfacing information-disclosure and hardening issues.
+    </div>
+  </section>
+
+  <div class="footer">
+    Generated by Xinai — Autonomous AI Pentest Agent <span class="dot">·</span> Document XINAI-RPT-2026-0042 <span class="dot">·</span> Confidential — Author's Own Property
+  </div>
+
+</div>
+</body>
+</html>
